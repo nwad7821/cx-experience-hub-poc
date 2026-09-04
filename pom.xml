@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sysco.cx</groupId>
+    <artifactId>cx-experience-hub-poc</artifactId>
+    <version>0.1.0</version>
+    <packaging>pom</packaging>
+
+    <name>cx-experience-hub-poc</name>
+    <description>Centralized experience-based feature enablement PoC</description>
+
+    <modules>
+        <module>cx-experience-hub</module>
+        <module>cx-experience-hub-service</module>
+        <module>cx-auth-server-poc</module>
+        <module>mss-order-service-poc</module>
+        <module>mss-frontend-poc</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <spring.boot.version>3.2.5</spring.boot.version>
+        <jackson.version>2.16.1</jackson.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

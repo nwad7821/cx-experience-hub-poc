@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  hub:
+    build: ./cx-experience-hub-service
+    ports: ["8081:8081"]
+  auth:
+    build: ./cx-auth-server-poc
+    environment:
+      - EXPERIENCE_HUB_URL=http://hub:8081
+    ports: ["8082:8082"]
+    depends_on: [hub]
+  order:
+    build: ./mss-order-service-poc
+    environment:
+      - EXPERIENCE_HUB_URL=http://hub:8081
+    ports: ["8083:8083"]
+    depends_on: [hub]
+  frontend:
+    build: ./mss-frontend-poc
+    environment:
+      - AUTH_URL=http://localhost:8082
+      - ORDER_URL=http://localhost:8083
+    ports: ["8080:8080"]
+    depends_on: [auth, order]
